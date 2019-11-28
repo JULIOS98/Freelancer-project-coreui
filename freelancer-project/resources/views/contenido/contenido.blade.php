@@ -5,6 +5,13 @@
   <dashboard-component> </dashboard-component>
 </template>
 
+<template v-if="menu==1">
+  <usuarios-component> </usuarios-component>
+</template>
+
+<template v-if="menu==3">
+  <pagos-component> </pagos-component>
+</template>
 
 
 

@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('contenido/contenido');
 });
+
+
+//Rutas de Usuarios
+Route::get('usuarios', 'UsuariosController@index');
+Route::post('usuarios/registrar', 'UsuariosController@store');
+Route::put('usuarios/actualizar', 'UsuariosController@update');
+Route::put('usuarios/activar', 'UsuariosController@activar');
+Route::put('usuarios/desactivar', 'UsuariosController@desactivar');
+
+

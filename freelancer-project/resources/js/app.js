@@ -5,7 +5,7 @@
  */
 
 require('./bootstrap');
-window.$ = window.jQuery = require('jquery');
+//window.$ = window.jQuery = require('jquery');
 window.Vue = require('vue');
 
 /**
@@ -21,6 +21,9 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('dashboard-component', require('./components/DashboardComponent.vue').default);
+Vue.component('usuarios-component', require('./components/UsuariosComponent.vue').default);
+Vue.component('pagos-component', require('./components/TransaccionComponent.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
