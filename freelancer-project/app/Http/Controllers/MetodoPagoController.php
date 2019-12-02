@@ -34,6 +34,14 @@ class MetodoPagoController extends Controller
         ];
     }
   
+    public function selectMetodo(Request $request)
+    {
+        //if (!$request->ajax()) return redirect('/');
+        $metodos_pago = MetodoPago::where('status','=','1')
+        ->select('id','nombre_metodo')->orderBy('nombre_metodo', 'asc')->get();
+        return ['metodos' => $metodos_pago];
+    }
+  
     public function store(Request $request){
       if(!$request->ajax()) return redirect('/');
       $metodos_pago = new MetodoPago();

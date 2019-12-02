@@ -13,10 +13,10 @@
                 
                 <div class="card-header">
                     <i class="fa fa-align-justify"></i> Usuarios
-                    <button type="button" @click="abrirModal('usuario','registrar')" class="btn btn-success">
-                        <i class="icon-plus"></i>&nbsp;Nuevo
-                    </button>
 
+                   <button type="button" @click="abrirModal('user','registrar')" class="btn btn-success">
+                      <i class="icon-plus"></i>&nbsp;Nuevo
+                   </button>
            
                 </div> <!--End card header-->
 
@@ -25,8 +25,8 @@
                         <div class="col-md-6">
                             <div class="input-group">
                                 <select class="form-control col-md-3" v-model="criterio">
-                                    <option value="nombre_usuario">Nombre</option>
-                                  
+                                    <option value="nombre">Nombre</option>
+                                
                                 </select>
                                 <input type="text" v-model="buscar" @keyup.enter="listarUsuario(1,buscar,criterio)" class="form-control" placeholder="Texto a buscar">
                                 <button type="submit" @click="listarUsuario(1,buscar,criterio)" class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
@@ -37,47 +37,59 @@
                     <table class="table table-hover table-sm">
                         <thead>
                             <tr>
-                                <th>Opciones</th>
+                                
+                                <th>Accion</th>
                                 <th>Nombre</th>
-                                <th>Apellido</th>
+                                <th>Apellido Paterno</th>
+                                <th>Apellido Materno</th>
+                                <th>Email</th>
                                 <th>Telefono</th>
+                                <th>Balance</th>
                                 <th>Fecha Nacimiento</th>
+                                <th>Metodo de Pago</th>
                                 <th>Ciudad</th>
-                                <th>Pais</th>
+                                <th>Nombre Usuario</th>
+                                <th>Password</th>
                                 <th>Status</th>
-                                <th>Acción</th>
+                                <th>Rol</th>
                             </tr>
                         </thead>
                     
                         <tbody>
-                            <tr v-for="usuario in arrayUsuario" :key="usuario.id">
-                                <td>
-                                    <button type="button" @click="abrirModal('usuario','actualizar',usuario)" class="btn btn-warning btn-sm">
+                            <tr v-for="users in arrayUsuario" :key="users.id">
+                             
+                                  <td>
+                                    <button type="button" @click="abrirModal('user','actualizar',user)" class="btn btn-warning btn-sm">
                                         <i class="icon-pencil"></i>
                                     </button> &nbsp;
-                                    <template v-if="usuario.status">
-                                        <button type="button" class="btn btn-danger btn-sm" @click="desactivarUsuario(usuario.id)">
+                                    <template v-if="users.status">
+                                        <button type="button" class="btn btn-danger btn-sm" @click="desactivarUsuario(users.id)">
                                             <i class="icon-trash"></i>
                                         </button>
                                     </template>
                                     
                                     <template v-else>
-                                        <button type="button" class="btn btn-info btn-sm" @click="activarUsuario(usuario.id)">
+                                        <button type="button" class="btn btn-info btn-sm" @click="activarUsuario(users.id)">
                                             <i class="icon-check"></i>
                                         </button>
                                     </template>
                                 </td>
             
-                                <td v-text="usuario.nombre_usuario"></td>
-                                <td v-text="usuario.apellido_usuario"></td>
-                                <td v-text="usuario.telefono_usuario"></td>
-                                <td v-text="usuario.fecha_nacimiento"></td>
-                                <td v-text="usuario.ciudad_usuario"></td>
-                                <td v-text="usuario.pais_usuario"></td>
-                                
-                                
+            
+                                <td v-text="users.nombre_persona"></td>
+                                <td v-text="users.apellido_paterno"></td>
+                                <td v-text="users.apellido_materno"></td>
+                                <td v-text="users.email"></td>
+                                <td v-text="users.telefono"></td>
+                                <td v-text="users.balance"></td>
+                                <td v-text="users.fecha_nacimiento"></td>
+                                <td v-text="users.nombre_metodo"></td>
+                                <td v-text="users.nombre_ciudad"></td>
+                                <td v-text="users.nombre"></td>
+                                <td v-text="users.password"></td>
+                           
                                 <td>                                
-                                    <div v-if="usuario.status">
+                                    <div v-if="users.status">
                                         <span class="badge badge-success">Activo</span>
                                     </div>
                                     
@@ -86,7 +98,7 @@
                                     </div>
                                 </td>
 
-                               <td> <button class="btn btn-primary">Ver detalles</button> </td>
+                               <td v-text="users.nombre_rol"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -109,8 +121,8 @@
             </div>  <!---End card --->
 
         </div> <!-- End container -->
-        
-        <!--Inicio del modal agregar/actualizar-->
+
+          <!--Inicio del modal agregar/actualizar-->
         <div class="modal fade" tabindex="-1" :class="{'mostrar' : modal}" role="dialog" aria-labelledby="myModalLabel" style="display: none;" aria-hidden="true">
             <div class="modal-dialog modal-primary modal-lg" role="document">
                 <div class="modal-content">
@@ -125,48 +137,78 @@
                         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                             
                           <div class="form-group row">
+                                <label class="col-md-3 form-control-label" for="text-input">Nombre Persona(*)</label>
+                                <div class="col-md-9">
+                                    <input type="text" v-model="nombre_persona" class="form-control" placeholder="Nombre de Persona">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group row">
+                                <label class="col-md-3 form-control-label" for="descripcion-input">Apellido Paterno(*)</label>
+                                <div class="col-md-9">
+                                    <input type="text" v-model="apellido_paterno" class="form-control" placeholder="Apellido Paterno">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 form-control-label" for="descripcion-input">Apellido Materno(*)</label>
+                                <div class="col-md-9">
+                                    <input type="text" v-model="apellido_materno" class="form-control" placeholder="Apellido Materno">
+                                </div>
+                            </div>
+                          
+                            <div class="form-group row">
+                                <label class="col-md-3 form-control-label" for="descripcion-input">E-mail(*)</label>
+                                <div class="col-md-9">
+                                    <input type="email" v-model="email" class="form-control" placeholder="Email">
+                                </div>
+                            </div>
+                          
+                       
+                            
+                 
+                            <div class="form-group row">
+                                <label class="col-md-3 form-control-label" for="descripcion-input">Fecha de Nacimiento</label>
+                                <div class="col-md-9">
+                                    <input type="date" v-model="fecha_nacimiento" class="form-control" placeholder="Fecha de Nacimiento">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group row">
+                              <label class="col-md-3 form-control-label" for="text-input">Metodo de Pago (*)</label>
+                                <div class="col-md-9">
+                                    <select class="form-control" v-model="id_metodoPago">
+                                        <option value="0" disabled>Seleccione</option>
+                                        <option v-for="metodo in arrayMetodo" :key="metodo.id" :value="metodo.id" v-text="metodo.nombre_metodo"></option>
+                                    </select>
+                                  </div>
+                                </div>
+                            
+                            <div class="form-group row">
+                                <label class="col-md-3 form-control-label" for="text-input">Ciudad (*)</label>
+                                <div class="col-md-9">
+                                    <select class="form-control" v-model="id_ciudad">
+                                        <option value="0" disabled>Seleccione</option>
+                                        <option v-for="ciudad in arrayCiudad" :key="ciudad.id" :value="ciudad.id" v-text="ciudad.nombre_ciudad"></option>
+                                    </select>
+                                </div>
+                           </div>
+                          
+                          <div class="form-group row">
                                 <label class="col-md-3 form-control-label" for="text-input">Nombre Usuario(*)</label>
                                 <div class="col-md-9">
                                     <input type="text" v-model="nombre_usuario" class="form-control" placeholder="Nombre de Usuario">
                                 </div>
                             </div>
-                            
-                            <div class="form-group row">
-                                <label class="col-md-3 form-control-label" for="descripcion-input">Apellido Usuario</label>
-                                <div class="col-md-9">
-                                    <input type="text" v-model="apellido_usuario" class="form-control" placeholder="Apellido de Usuario">
-                                </div>
-                            </div>
                           
-                                <div class="form-group row">
-                                <label class="col-md-3 form-control-label" for="text-input">Telefono(*)</label>
-                                <div class="col-md-9">
-                                    <input type="text" v-model="telefono_usuario" class="form-control" placeholder="Telefono de Usuario">
-                                </div>
-                            </div>
-                            
-                            <div class="form-group row">
-                                <label class="col-md-3 form-control-label" for="descripcion-input">Fecha de Nacimiento</label>
-                                <div class="col-md-9">
-                                    <input type="text" v-model="fecha_nacimiento" class="form-control" placeholder="Fecha de Nacimiento">
-                                </div>
-                            </div>
-                            
-                          <div class="form-group row">
                           
-                                <label class="col-md-3 form-control-label" for="text-input">Ciudad(*)</label>
+                            <div class="form-group row">
+                                <label class="col-md-3 form-control-label" for="text-input">Password(*)</label>
                                 <div class="col-md-9">
-                                    <input type="text" v-model="ciudad_usuario" class="form-control" placeholder="Ciudad">
+                                    <input type="password" v-model="password" class="form-control" placeholder="Password">
                                 </div>
                             </div>
                             
-                            <div class="form-group row">
-                                <label class="col-md-3 form-control-label" for="descripcion-input">Pais</label>
-                                <div class="col-md-9">
-                                    <input type="text" v-model="pais_usuario" class="form-control" placeholder="Pais">
-                                </div>
-                            </div>
-            
+                            
                             <div v-show="errorUsuario" class="form-group row div-error">
                                 <div class="text-center text-error">
                                     <div v-for="error in errorMostrarMsjUsuario" :key="error" v-text="error">
@@ -186,6 +228,8 @@
             </div> <!-- /.modal-dialog -->
         </div> <!--Fin del modal-->
     
+        
+    
 
   </main>
 </template>
@@ -197,15 +241,27 @@
        data ()
         {
             return {
-                categoria_id: 0,
+                
                 id: 0,
-                nombre_usuario : '',
-                apellido_usuario : '',
-                telefono_usuario: '',
+                id_persona: 0,
+                nombre_persona : '',
+                apellido_paterno : '',
+                apellido_materno: '',
                 fecha_nacimiento : '',
-                ciudad_usuario: '',
-                pais_usuario: '',
+                email: '',
+                telefono: '',
+                balance: 0,
+                id_metodoPago: '',
+                nombre_metodo: '',
+                id_ciudad: '',
+                nombre_ciudad: '',
+                nombre_usuario: '',
+                password: '',
+                id_rol: 0,
+                nombre_rol: '',
                 arrayUsuario : [],
+                arrayMetodo : [],
+                arrayCiudad : [],
                 modal : 0,
                 tituloModal : '',
                 tipoAccion : 0,
@@ -275,13 +331,36 @@
                 axios.get(url).then(function (response) 
                 {
                     var respuesta= response.data;
-                    me.arrayUsuario = respuesta.usuarios.data;
+                    me.arrayUsuario = respuesta.users.data;
                     me.pagination= respuesta.pagination;
                 })
                 
                 .catch(function (error) { console.log(error);});
             }, //End listarCategoria
         
+            selectMetodo(){
+                let me=this;
+                var url='/metodos/selectMetodo';
+                axios.get(url).then(function (response){
+                    var respuesta = response.data;
+                    me.arrayMetodo = respuesta.metodos;
+                })
+                .catch(function(error){
+                    console.log(error);
+                });
+            },
+     
+              selectCiudad(){
+              let me=this;
+              var url='/ciudades/selectCiudad';
+              axios.get(url).then(function (response){
+                  var respuesta = response.data;
+                  me.arrayCiudad = respuesta.city;
+              })
+              .catch(function(error){
+                  console.log(error);
+              });
+            },
      
 
             //metodo cambiarPagina
@@ -293,8 +372,7 @@
                 //Envia la petición para visualizar la data de esa página
                 me.listarUsuario(page,buscar,criterio);
             },//End cambiarPagina
-
-            //metodo registrarCategoria
+              
             registrarUsuario()
             {
                 if (this.validarUsuario())
@@ -305,52 +383,26 @@
                 //Metodo axios
                 axios.post('/usuarios/registrar',
                 {
-                'nombre_usuario': this.nombre_usuario,
-                'apellido_usuario': this.apellido_usuario,
-                'telefono_usuario': this.telefono_usuario,
+                'nombre_persona': this.nombre_persona,
+                'apellido_paterno': this.apellido_paterno,
+                'apellido_materno': this.telefono_materno,
                 'fecha_nacimiento': this.fecha_nacimiento,
-                'ciudad_usuario': this.ciudad_usuario,
-                'pais_usuario': this.pais_usuario
+                'email': this.email,
+                'id' : this.id_metodoPago,
+                'id' : this.id_city,
+                'nombre_usuario' : this.nombre_usuario,
+                'password' : this.password
                 })
                 .then(function (response) {
                 me.cerrarModal();
-                me.listarUsuario(1,'','nombre_usuario');
+                me.listarUsuario(1,'','nombre');
                 })
                 .catch(function (error) {
                 console.log(error);
                 });
-            }, //End de registrarCategoria
-
-            //Metodo actualizarCategoria
-            actualizarUsuario()
-            {
-                if (this.validarUsuario())
-                {
-                    return;
-                }
-                
-                let me = this;
-                //Metodo axios
-                axios.put('/usuarios/actualizar',
-                {
-                'nombre_usuario': this.nombre_usuario,
-                'apellido_usuario': this.apellido_usuario,
-                'telefono_usuario': this.telefono_usuario,
-                'fecha_nacimiento': this.fecha_nacimiento,
-                'ciudad_usuario': this.ciudad_usuario,
-                'pais_usuario': this.pais_usuario,
-                'id': this.id
-                })
-                .then(function (response) {
-                me.cerrarModal();
-                me.listarUsuario(1,'','nombre_usuario');
-                })
-                .catch(function (error) {
-                console.log(error);
-                });
-            },//End actualizarCategoria
-
-            //Metodo desactivarCategoria
+            }, 
+             
+            //Metodo desactivarUsuario
             desactivarUsuario(id)
             {
                 swal.fire({
@@ -376,7 +428,7 @@
                             'id': id
                         })
                         .then(function (response) {
-                        me.listarUsuario(1,'','nombre_usuario');
+                        me.listarUsuario(1,'','nombre');
                         swal.fire(
                             'Desactivado!',
                             'El registro ha sido desactivado con éxito.',
@@ -423,7 +475,7 @@
                         'id': id
                         })
                         .then(function (response) {
-                            me.listarUsuario(1,'','nombre_usuario');
+                            me.listarUsuario(1,'','nombre');
                             swal.fire(
                                 'Activado!',
                                 'El registro ha sido activado con éxito.',
@@ -439,7 +491,7 @@
                 }) //End Then
             },//End activar Usuarios
 
-            //Metodo validarUsuarios
+             //Metodo validarUsuarios
             validarUsuario()
             {
                 this.errorUsuario=0;
@@ -453,12 +505,17 @@
             cerrarModal(){
                 this.modal=0;
                 this.tituloModal='';
-                this.nombre_usuario="";
-                this.apellido_usuario="";
-                this.telefono_usuario="";
+                this.nombre_persona="";
+                this.apellido_paterno="";
                 this.fecha_nacimiento="";
-                this.ciudad_usuario="";
-                this.pais_usuario="";
+                this.email="";
+                this.telefono="";
+                this.balance=0;
+                this.nombre_metodo="";
+                this.nombre_ciudad="";
+                this.nombre_usuario="";
+                this.password="";
+            
             },//End cerrarModal
 
             //Metod AbrirModa;
@@ -466,7 +523,7 @@
             {
                 switch(modelo)
                 {
-                    case "usuario":
+                    case "user":
                     {
                         switch(accion)
                         {
@@ -474,12 +531,16 @@
                             {
                                 this.modal = 1;
                                 this.tituloModal = 'Registrar Usuario';
-                                this.nombre_usuario="";
-                                this.apellido_usuario="";
-                                this.telefono_usuario="";
-                                this.fecha_nacimiento="";
-                                this.ciudad_usuario="";
-                                this.pais_usuario="";
+                                  this.nombre_persona="";
+                                  this.apellido_paterno="";
+                                  this.apellido_materno="";
+                                  this.fecha_nacimiento="";
+                                  this.email="";
+                                  this.nombre_metodo="";
+                                  this.nombre_ciudad="";
+                                  this.nombre_usuario="";
+                                  this.password="";
+                               
                                 this.tipoAccion = 1;
                                 break;
                             }
@@ -503,6 +564,8 @@
                         }
                     }
                 }
+              this.selectMetodo();
+              this.selectCiudad();
             }
             
         },//End de Methods

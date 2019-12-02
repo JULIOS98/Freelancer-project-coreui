@@ -13,26 +13,35 @@ class PersonasController extends Controller
     
     public function index(Request $request)
     {
-        if (!$request->ajax()) return redirect('/');
+        //if (!$request->ajax()) return redirect('/');
         $buscar = $request->buscar;
         $criterio = $request->criterio;
          
         if ($buscar==''){
             $personas = Persona::join('metodos_pago','personas.id_metodoPago','=','metodos_pago.id')
-            ->join('city','personas.id_ciudad','=','city.id')
-            ->select('personas.id_persona','personas.nombre','personas.apellido_paterno',
-            'personas.apellido_materno','personas.email','personas.telefono',
-            'personas.balance','personas.fecha_nacimiento','metodos_pago.nombre_metodo',
+            ->join('city','personas.id_city','=','city.id')
+            ->select(
+            'personas.id_persona',
+            'personas.nombre',
+            'personas.apellido_paterno',
+            'personas.apellido_materno',
+            'personas.email',
+            'personas.telefono',
+            'personas.balance',
+            'personas.fecha_nacimiento',
+            'metodos_pago.id',
+            'metodos_pago.nombre_metodo',
+            'city.id',
             'city.nombre_ciudad')
             ->orderBy('personas.id_persona', 'desc')->paginate(3);
         }
         else{
             $personas = Persona::join('metodos_pago','personas.id_metodoPago','=','metodos_pago.id')
-            ->join('city','personas.id_ciudad','=','city.id')
+            ->join('city','personas.id_city','=','city.id')
             ->select('personas.id_persona','personas.nombre','personas.apellido_paterno',
             'personas.apellido_materno','personas.email','personas.telefono',
-            'personas.balance','personas.fecha_nacimiento','metodos_pago.nombre_metodo',
-            'city.nombre_ciudad')            
+            'personas.balance','personas.fecha_nacimiento','metodos_pago.id','metodos_pago.nombre_metodo',
+            'city.id','city.nombre_ciudad')            
             ->where('personas.'.$criterio, 'like', '%'. $buscar . '%')
             ->orderBy('personas.id_persona', 'desc')->paginate(3);
         }

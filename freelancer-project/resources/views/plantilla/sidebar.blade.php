@@ -30,6 +30,9 @@
                     <li @click="menu=12" class="nav-item">
                         <a class="nav-link" href="#"><i class="icon-user-following"></i> Personas</a>
                     </li>
+                    <li @click="menu=13" class="nav-item">
+                        <a class="nav-link" href="#"><i class="icon-user-following"></i> Perfil</a>
+                    </li>
                 </ul>
             </li>
             

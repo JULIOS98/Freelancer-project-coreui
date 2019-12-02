@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+//Modelo Usuario
 class User extends Authenticatable
 {
     use Notifiable;
@@ -15,7 +16,13 @@ class User extends Authenticatable
      *
      * @var array
      */
+    //Referencia a la tabla que esta asociada al modelo
     protected $table = 'users';
+  
+    //Referencia a la clave primaria.
+    protected $primaryKey='id';
+    
+    //Arreglo que contienen los datos a modificar dentro del controlador
     protected $fillable = ['id_persona' ,'nombre', 'password', 'status' , 'id_rol'];
 
     /**

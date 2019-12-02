@@ -50,9 +50,12 @@
   <gastos-proyectos-component></gastos-proyectos-component>
 </template>
 
-
 <template v-if="menu==12">
-  <personas-component> </personas-component>
+  <personas-component></personas-component>
+</template>
+
+<template v-if="menu==13">
+  <perfil-usuario-component></perfil-usuario-component>
 </template>
 
 

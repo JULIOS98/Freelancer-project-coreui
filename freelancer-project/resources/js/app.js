@@ -29,6 +29,7 @@ Vue.component('pagos-component', require('./components/MetodosPagoComponent.vue'
 Vue.component('usuarios-component', require('./components/UsuariosComponent.vue').default);
 Vue.component('roles-component', require('./components/RolesComponent.vue').default);
 Vue.component('personas-component', require('./components/PersonasComponent.vue').default);
+Vue.component('perfil-usuario-component', require('./components/PerfilUsuarioComponent.vue').default);
 
 /*Componentes Proyecto*/
 Vue.component('dashboard-proyectos-component', require('./components/DashboardProyectosComponent.vue').default);
