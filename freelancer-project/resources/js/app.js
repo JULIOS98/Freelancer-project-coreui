@@ -21,9 +21,23 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('dashboard-component', require('./components/DashboardComponent.vue').default);
-Vue.component('usuarios-component', require('./components/UsuariosComponent.vue').default);
-Vue.component('pagos-component', require('./components/TransaccionComponent.vue').default);
 
+Vue.component('pagos-component', require('./components/MetodosPagoComponent.vue').default);
+//Vue.component('pagos_usuarios-component', require('./components/Ingreso.vue').default);
+
+//Componentes Usuarios
+Vue.component('usuarios-component', require('./components/UsuariosComponent.vue').default);
+Vue.component('roles-component', require('./components/RolesComponent.vue').default);
+Vue.component('personas-component', require('./components/PersonasComponent.vue').default);
+
+/*Componentes Proyecto*/
+Vue.component('dashboard-proyectos-component', require('./components/DashboardProyectosComponent.vue').default);
+Vue.component('usuarios-proyectos-component', require('./components/UsuariosProyectosComponent.vue').default);
+Vue.component('task-proyectos-component', require('./components/TaskProyectosComponent.vue').default);
+Vue.component('proyectos-component', require('./components/ProyectosComponent.vue').default);
+Vue.component('milestones-proyectos-component', require('./components/MilestonesProyectosComponent.vue').default);
+Vue.component('issues-proyectos-component', require('./components/IssuesProyectosComponent.vue').default);
+Vue.component('gastos-proyectos-component', require('./components/GastosProyectosComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

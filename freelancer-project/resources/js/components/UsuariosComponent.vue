@@ -13,7 +13,7 @@
                 
                 <div class="card-header">
                     <i class="fa fa-align-justify"></i> Usuarios
-                    <button type="button" @click="abrirModal('usuario','registrar')" class="btn btn-secondary">
+                    <button type="button" @click="abrirModal('usuario','registrar')" class="btn btn-success">
                         <i class="icon-plus"></i>&nbsp;Nuevo
                     </button>
 
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     
-                    <table class="table table-bordered table-striped table-sm">
+                    <table class="table table-hover table-sm">
                         <thead>
                             <tr>
                                 <th>Opciones</th>

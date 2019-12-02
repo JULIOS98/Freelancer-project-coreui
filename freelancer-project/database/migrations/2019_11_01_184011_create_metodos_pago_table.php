@@ -15,12 +15,12 @@ class CreateMetodosPagoTable extends Migration
     {
         Schema::create('metodos_pago', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre_metodo',50);
-            $table->string('monto_min', 256);
-            $table->string('monto_max', 256);
-            $table->string('carga_fija', 50);
-            $table->string('porcentaje_carga', 50);
-            $table->string('tarifa', 150);
+            $table->string('nombre_metodo');
+            $table->integer('monto_min');
+            $table->integer('monto_max');
+            $table->integer('carga_fija');
+            $table->decimal('porcentaje_carga',11,2);
+            $table->integer('tarifa');
             $table->string('dias_procesamiento', 50);
             $table->boolean('status')->default(1);
             $table->timestamps();
