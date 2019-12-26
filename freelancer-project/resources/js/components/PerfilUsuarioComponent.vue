@@ -15,7 +15,7 @@
         
         <div class="card-body">
           <div class="row">
-            <div class="col-sm-6 col-xl-3">
+            <!--<div class="col-sm-6 col-xl-3">
                 <div class="card">
                     <div class="card-heading p-4">
                         <div class="mini-stat-icon float-right">
@@ -30,9 +30,9 @@
                       <p class="font-12 text-center">0 transaccionado</p>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
-            <div class="col-sm-6 col-xl-3">
+            <div class="col-sm-6 col-xl-6">
                 <div class="card">
                     <div class="card-heading p-4">
                         <div class="mini-stat-icon float-right">
@@ -49,7 +49,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-6 col-xl-3">
+            <div class="col-sm-6 col-xl-6">
                 <div class="card">
                     <div class="card-heading p-4">
                         <div class="mini-stat-icon float-right">
@@ -66,7 +66,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-6 col-xl-3">
+            <!--<div class="col-sm-6 col-xl-3">
                 <div class="card">
                     <div class="card-heading p-4">
                         <div class="mini-stat-icon float-right">
@@ -81,10 +81,10 @@
                       <p class="font-12 text-center text-muted">0 transferido</p>
                     </div>
                 </div>
-            </div>
+            </div>-->
           </div>
           
-          <div class="row">
+          <!--<div class="row">
             <div class="col-sm-12 col-xl-12">
               <div class="card">
                 <div class="card-heading p-4">
@@ -108,7 +108,7 @@
                 </div>
               </div>              
             </div>            
-          </div>
+          </div>-->
         </div>
       </div>
     </div>

@@ -81,10 +81,10 @@
 
     </div> <!---END de DIV APP-->
 
-    <footer class="app-footer">
+    <!--<footer class="app-footer">
         <span><a href="http://www.incanatoit.com/">JULIOS98</a> &copy; 2019</span>
         <span class="ml-auto">Desarrollado por <a href="http://www.juliosdeveloper.me/">JULIOS98</a></span>
-    </footer>
+    </footer>-->
 
    
     <!-- GenesisUI main scripts -->

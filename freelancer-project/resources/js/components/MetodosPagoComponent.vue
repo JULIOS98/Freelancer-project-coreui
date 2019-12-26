@@ -270,7 +270,7 @@
 
         methods : 
         {
-            //Metodo listarCategoria
+            
             listarMetodo(page,buscar,criterio)
             {
                 let me=this;

@@ -149,12 +149,16 @@
                                     <input type="text" v-model="apellido_paterno" class="form-control" placeholder="Apellido Paterno">
                                 </div>
                             </div>
-                            <div class="form-group row">
+                          
+                           <div class="form-group row">
                                 <label class="col-md-3 form-control-label" for="descripcion-input">Apellido Materno(*)</label>
                                 <div class="col-md-9">
                                     <input type="text" v-model="apellido_materno" class="form-control" placeholder="Apellido Materno">
                                 </div>
                             </div>
+                          
+                        
+                        
                           
                             <div class="form-group row">
                                 <label class="col-md-3 form-control-label" for="descripcion-input">E-mail(*)</label>
@@ -164,8 +168,6 @@
                             </div>
                           
                        
-                            
-                 
                             <div class="form-group row">
                                 <label class="col-md-3 form-control-label" for="descripcion-input">Fecha de Nacimiento</label>
                                 <div class="col-md-9">
@@ -244,10 +246,10 @@
                 
                 id: 0,
                 id_persona: 0,
-                nombre_persona : '',
-                apellido_paterno : '',
+                nombre_persona: '',
+                apellido_paterno: '',
                 apellido_materno: '',
-                fecha_nacimiento : '',
+                fecha_nacimiento: '',
                 email: '',
                 telefono: '',
                 balance: 0,
@@ -383,14 +385,15 @@
                 //Metodo axios
                 axios.post('/usuarios/registrar',
                 {
-                'nombre_persona': this.nombre_persona,
+                'nombre': this.nombre_persona,
                 'apellido_paterno': this.apellido_paterno,
-                'apellido_materno': this.telefono_materno,
+                'apellido_materno': this.apellido_materno,
                 'fecha_nacimiento': this.fecha_nacimiento,
                 'email': this.email,
-                'id' : this.id_metodoPago,
-                'id' : this.id_city,
-                'nombre_usuario' : this.nombre_usuario,
+                'id_metodoPago' : this.id_metodoPago,
+                'id_city' : this.id_ciudad,
+                'id_persona': this.id_persona,
+                'nombre' : this.nombre_usuario,
                 'password' : this.password
                 })
                 .then(function (response) {

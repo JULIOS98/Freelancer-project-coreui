@@ -59,6 +59,14 @@
 </template>
 
 
+<template v-if="menu==15">
+  <retiro-component></retiro-component>
+</template>
+
+<template v-if="menu==16">
+  <navbar-component></navbar-component>
+</template>
+
 
 
 

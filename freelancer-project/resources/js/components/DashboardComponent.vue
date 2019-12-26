@@ -96,12 +96,5 @@
          
 </template>
 
-<script>
-    export default {
-        mounted() {
-            console.log('Component Dashboard.')
-        }
-    }
-</script>
 
 

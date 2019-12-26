@@ -97,8 +97,8 @@ class UsuariosController extends Controller
             DB::beginTransaction();
           
             $persona = new Persona();
-            $persona->nombre = $request->nombre;
-            $persona->apellido_paterno = $request->apellido_paterno;
+            $persona->nombre= $request->nombre;
+            $persona->apellido_paterno = $request->apellido_paterno;  
             $persona->apellido_materno = $request->apellido_materno;
             $persona->email = $request->email;
             $persona->telefono = '3125186';
@@ -107,9 +107,11 @@ class UsuariosController extends Controller
             $persona->id_metodoPago = $request->id_metodoPago;
             $persona->id_city = $request->id_city;
             $persona->save();
+          
+            //$last_id = $persona->id_persona;
  
             $user = new User();
-            $user->id_persona = $persona->id_persona;
+            $user->id_persona = '2';
             $user->nombre = $request->nombre;
             $user->password = bcrypt($request->password);
             $user->status = '1';

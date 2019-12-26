@@ -40,6 +40,12 @@ Vue.component('milestones-proyectos-component', require('./components/Milestones
 Vue.component('issues-proyectos-component', require('./components/IssuesProyectosComponent.vue').default);
 Vue.component('gastos-proyectos-component', require('./components/GastosProyectosComponent.vue').default);
 
+//Componentes Navbar
+Vue.component('navbar-component', require('./components/NavBarComponent.vue').default);
+
+/*Componentes Pagos*/
+//Vue.component('envio-component', require('./components/IngresosComponent.vue').default);
+Vue.component('retiro-component', require('./components/RetirosComponent.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
